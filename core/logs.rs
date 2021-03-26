@@ -68,6 +68,5 @@ mod tests {
 
         assert_eq!(log_new.code, 1);
         assert_eq!(log_new.message, "message");
-        assert_ne!(log_new.message, String::from("message"));
     }
 }
