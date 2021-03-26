@@ -46,7 +46,7 @@ jobs:
           startsWith(matrix.os, 'ubuntu')
         run: |
           mkdir catsh-x86_64-unknown-linux-gnu/
-          cp -f README.md CHANGELOG.md example/ target/release/catsh catsh-x86_64-unknown-linux-gnu/
+          cp -f README.md target/release/catsh catsh-x86_64-unknown-linux-gnu/
           zip -r catsh-x86_64-unknown-linux-gnu.zip catsh-x86_64-unknown-linux-gnu/
 
       - name: Pre-release (Windows)
@@ -55,7 +55,7 @@ jobs:
           startsWith(matrix.os, 'windows')
         run: |
           New-Item -Path . -Name "catsh-x86_64-pc-windows-msvc" -ItemType "directory"
-          Copy-Item -Path "README.md","CHANGELOG.md" -Destination "catsh-x86_64-pc-windows-msvc"
+          Copy-Item -Path "README.md" -Destination "catsh-x86_64-pc-windows-msvc"
           Compress-Archive -CompressionLevel Optimal -Force -Path target/release/catsh.exe -DestinationPath target/release/catsh-x86_64-pc-windows-msvc.zip
 
       - name: Pre-release (MacOS)
@@ -64,7 +64,7 @@ jobs:
           startsWith(matrix.os, 'macos')
         run: |
           mkdir catsh-x86_64-apple-darwin/
-          cp -f README.md CHANGELOG.md example/ target/release/catsh catsh-x86_64-apple-darwin/
+          cp -f README.md target/release/catsh catsh-x86_64-apple-darwin/
           zip -r catsh-x86_64-apple-darwin.zip catsh-x86_64-apple-darwin/
 
       - name: Release
