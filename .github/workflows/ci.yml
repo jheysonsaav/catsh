@@ -72,11 +72,10 @@ jobs:
         if: |
           startsWith(github.ref, 'refs/tags/v')
         env:
-          GITHUB_TOKEN: ${{ secrets.GIHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           files: |
             target/release/catsh-x86_64-unknown-linux-gnu.zip
             target/release/catsh-x86_64-pc-windows-msvc.zip
             target/release/catsh-x86_64-apple-darwin.zip
-          body_path: CHANGELOG.md
           draft: true
