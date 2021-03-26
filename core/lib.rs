@@ -1,3 +1,6 @@
+pub mod colors;
+pub mod logs;
+
 #[cfg(test)]
 mod tests {
     #[test]
