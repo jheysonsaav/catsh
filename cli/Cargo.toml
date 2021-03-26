@@ -16,7 +16,6 @@ path = "main.rs"
 clap = "2.33.3"
 
 [package.metadata.winres]
-# This section defines the metadata that appears in the deno.exe PE header.
 OriginalFilename = "catsh.exe"
 LegalCopyright = "Copyright (C) Catsh contributors. All right reserved."
 ProductName = "Catsh"
