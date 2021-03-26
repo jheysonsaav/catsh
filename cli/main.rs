@@ -1,7 +1,10 @@
 mod commands;
 
-use catsh_core::{logs::Log, logs::LogLevel};
+use catsh_core::logs::{Log, LogLevel};
 use clap::{App, Arg, SubCommand};
+
+#[cfg(windows)]
+use catsh_core::colors;
 
 fn main() {
     #[cfg(windows)]
