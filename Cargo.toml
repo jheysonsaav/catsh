@@ -1,8 +1,6 @@
-[package]
-name = "catsh"
-version = "0.1.0-alpha.0"
-authors = ["Jheyson Saavedra <jheysonsaav@gmail.com>"]
-edition = "2018"
-license = "GPL-2.0"
+[workspace]
 
-[dependencies]
+members = [
+  "core",
+  "cli",
+]

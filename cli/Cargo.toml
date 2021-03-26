@@ -1,0 +1,19 @@
+[package]
+name = "catsh-cli"
+version = "0.1.0-alpha.0"
+authors = ["Jheyson Saavedra <jheysonsaav@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "catsh"
+path = "main.rs"
+
+[dependencies]
+clap = "2.33.3"
+
+[package.metadata.winres]
+# This section defines the metadata that appears in the deno.exe PE header.
+OriginalFilename = "catsh.exe"
+LegalCopyright = "Copyright (C) Catsh contributors. All right reserved."
+ProductName = "Catsh"
+FileDescription = "A cross-platform shell."
