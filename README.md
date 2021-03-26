@@ -1,4 +1,8 @@
 # Catsh
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jheysonsaav/catsh/Ci?label=Ci&logo=github)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/jheysonsaav/catsh?include_prereleases&label=Release)
+![GitHub license](https://img.shields.io/github/license/jheysonsaav/catsh)
+![GitHub contributors](https://img.shields.io/github/contributors/jheysonsaav/catsh?label=Contributors)
 
 The best cross-platform shell
 
