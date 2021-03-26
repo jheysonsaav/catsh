@@ -1,8 +1,11 @@
 [package]
 name = "catsh-core"
 version = "0.1.0-alpha.0"
-authors = ["Jheyson Saavedra <jheysonsaav@gmail.com>"]
+description = "A cross-platform shell."
+authors = ["catsh Contributors"]
 edition = "2018"
+license = "GPL-2.0"
+repository = "https://github.com/jheysonsaav/catsh"
 
 [lib]
 path = "lib.rs"
