@@ -47,7 +47,7 @@ jobs:
         run: |
           mkdir catsh-x86_64-unknown-linux-gnu/
           cp -f README.md target/release/catsh catsh-x86_64-unknown-linux-gnu/
-          zip -r catsh-x86_64-unknown-linux-gnu.zip catsh-x86_64-unknown-linux-gnu/
+          zip -9r catsh-x86_64-unknown-linux-gnu.zip catsh-x86_64-unknown-linux-gnu/
 
       - name: Pre-release (Windows)
         if: |
@@ -56,7 +56,7 @@ jobs:
         run: |
           New-Item -Path . -Name "catsh-x86_64-pc-windows-msvc" -ItemType "directory"
           Copy-Item -Path "README.md" -Destination "catsh-x86_64-pc-windows-msvc"
-          Compress-Archive -CompressionLevel Optimal -Force -Path target/release/catsh.exe -DestinationPath target/release/catsh-x86_64-pc-windows-msvc.zip
+          Compress-Archive -CompressionLevel Optimal -Force -Path target/release/catsh.exe -DestinationPath catsh-x86_64-pc-windows-msvc.zip
 
       - name: Pre-release (MacOS)
         if: |
@@ -65,7 +65,7 @@ jobs:
         run: |
           mkdir catsh-x86_64-apple-darwin/
           cp -f README.md target/release/catsh catsh-x86_64-apple-darwin/
-          zip -r catsh-x86_64-apple-darwin.zip catsh-x86_64-apple-darwin/
+          zip -9r catsh-x86_64-apple-darwin.zip catsh-x86_64-apple-darwin/
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -75,7 +75,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           files: |
-            target/release/catsh-x86_64-unknown-linux-gnu.zip
-            target/release/catsh-x86_64-pc-windows-msvc.zip
-            target/release/catsh-x86_64-apple-darwin.zip
+            catsh-x86_64-unknown-linux-gnu.zip
+            catsh-x86_64-pc-windows-msvc.zip
+            catsh-x86_64-apple-darwin.zip
           draft: true
