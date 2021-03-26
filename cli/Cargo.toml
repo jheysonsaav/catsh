@@ -13,6 +13,7 @@ name = "catsh"
 path = "main.rs"
 
 [dependencies]
+catsh-core = { path = "../core" }
 clap = "2.33.3"
 
 [package.metadata.winres]

@@ -1,8 +1,12 @@
 mod commands;
 
+use catsh_core::{logs::Log, logs::LogLevel};
 use clap::{App, Arg, SubCommand};
 
 fn main() {
+    #[cfg(windows)]
+    colors::enable_ansi();
+
     const APP_VERSION: &'static str = env!("CARGO_PKG_VERSION");
     const APP_AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 
@@ -24,6 +28,9 @@ fn main() {
 
     match matches.subcommand() {
         ("run", Some(new_args)) => commands::run::run_command(new_args),
-        (&_, _) => println!("Command not found"),
+        (&_, _) => {
+            let _ =
+                Log::new(LogLevel::Error, 0, "Command not found", Some(true));
+        }
     }
 }
