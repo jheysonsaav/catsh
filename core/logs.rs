@@ -39,59 +39,39 @@ pub enum LogLevel {
 /// these are some uses that this structure can be given.
 #[derive(Debug)]
 pub struct Log {
-    pub level: LogLevel,
-    pub code: u16,
-    pub message: String,
+    level: LogLevel,
+    code: u16,
+    message: String,
 }
 
 impl Log {
     /// This function allows us to create a new log in a very intuitive and easy way,
     /// it also allows us to do extra things like print it in the console
-    pub fn new(
-        level: LogLevel,
-        code: u16,
-        message: &str,
-        print: Option<bool>,
-    ) -> Self {
-        if print == Some(false) || print == None {
-            Self {
-                level,
-                code,
-                message: String::from(message),
+    pub fn new(level: LogLevel, code: u16, message: &str) -> Self {
+        Self {
+            level,
+            code,
+            message: String::from(message),
+        }
+    }
+
+    pub fn show(&self) {
+        match self.level {
+            LogLevel::Info => {
+                println!("{} {}", colors::green_bold("Info:"), self.message);
             }
-        } else {
-            let level_value = |color: bool| {
-                if color == false {
-                    let level_name = match level {
-                        LogLevel::Info => String::from("Info"),
-                        LogLevel::Ok => String::from("Ok"),
-                        LogLevel::Error => String::from("Error"),
-                        LogLevel::Warning => String::from("Warning"),
-                    };
-
-                    return level_name;
-                } else {
-                    let level_name = match level {
-                        LogLevel::Info => {
-                            colors::green_bold("Info").to_string()
-                        }
-                        LogLevel::Ok => colors::intense_blue("Ok").to_string(),
-                        LogLevel::Error => {
-                            colors::red_bold("Error").to_string()
-                        }
-                        LogLevel::Warning => {
-                            colors::yellow_bold("Warning").to_string()
-                        }
-                    };
-
-                    return level_name;
-                }
-            };
-            println!("{} {}", format!("{}:", level_value(true)), message);
-            Self {
-                level,
-                code,
-                message: String::from(message),
+            LogLevel::Ok => {
+                println!("{} {}", colors::intense_blue("Ok:"), self.message);
+            }
+            LogLevel::Error => {
+                println!("{} {}", colors::red_bold("Error:"), self.message);
+            }
+            LogLevel::Warning => {
+                println!(
+                    "{} {}",
+                    colors::yellow_bold("Warning:"),
+                    self.message
+                );
             }
         }
     }
@@ -103,7 +83,7 @@ mod tests {
 
     #[test]
     fn test_new_log() {
-        let log_new = Log::new(LogLevel::Error, 1, "message", None);
+        let log_new = Log::new(LogLevel::Error, 1, "message");
 
         assert_eq!(log_new.code, 1);
         assert_eq!(log_new.message, "message");

@@ -12,7 +12,16 @@ pub enum DirLabel {
     RuntimeDir,
 }
 
-pub fn get(label: DirLabel) -> PathBuf {
+#[derive(Debug)]
+pub struct CatshDirs;
+
+impl CatshDirs {
+    pub fn config_dir() -> &'static Path {
+        Path::new("asd")
+    }
+}
+
+pub fn get_dir(label: DirLabel) -> PathBuf {
     if let Some(dirs) = ProjectDirs::from("com", "jheysonsaav", "catsh") {
         match label {
             DirLabel::ConfigDir => return dirs.config_dir().to_owned(),
