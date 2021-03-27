@@ -1,5 +1,5 @@
 // Copyright (C) Catsh authors. All right reserved.
-use std::{env, path::PathBuf};
+use std::env;
 
 use crate::{logs::Log, User};
 

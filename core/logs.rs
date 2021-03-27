@@ -33,8 +33,14 @@ pub enum LogLevel {
 /// ```rust
 /// use catsh_core::logs::{Log, LogLevel};
 ///
-/// let my_log_print: Log = Log::new(LogLevel::Warning, 0, "This is a test log.", Some(true));
-/// let my_log__no_print: Log = Log::new(LogLevel::Warning, 0, "This is a test log.", None);
+/// // this print a log
+/// Log::new(LogLevel::Warning, 0, "This is a test log.").show();
+///
+/// // this return a log
+/// let my_log: Log = Log::new(LogLevel::Warning, 0, "This is a test log.");
+///
+/// // we can also print an existing log
+/// my_log.show();
 /// ```
 /// these are some uses that this structure can be given.
 #[derive(Debug)]
