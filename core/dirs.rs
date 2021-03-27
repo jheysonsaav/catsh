@@ -1,3 +1,4 @@
+// Copyright (C) Catsh authors. All right reserved.
 use directories::ProjectDirs;
 use std::path::{Path, PathBuf};
 

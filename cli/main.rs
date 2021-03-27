@@ -1,3 +1,4 @@
+// Copyright (C) Catsh authors. All right reserved.
 mod commands;
 
 use catsh_core::logs::{Log, LogLevel};
