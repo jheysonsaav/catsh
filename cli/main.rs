@@ -33,7 +33,7 @@ fn main() {
     match matches.subcommand() {
         ("run", Some(new_args)) => commands::run::run_command(new_args),
         (&_, _) => {
-            let _ = Log::new(LogLevel::Error, 0, "Command not found").show();
+            Log::new(LogLevel::Error, 0, "Command not found").show();
         }
     }
 }
