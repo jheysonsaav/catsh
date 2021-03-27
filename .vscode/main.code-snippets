@@ -1,0 +1,7 @@
+{
+	"copyright line": {
+		"scope": "rust",
+		"prefix": "copy",
+		"body": "// Copyright (C) Catsh authors. All right reserved.",
+	}
+}
