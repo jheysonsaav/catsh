@@ -22,6 +22,8 @@ use crate::colors;
 /// that is why it is usually used together with the `Log` structure
 #[derive(Debug)]
 pub enum LogLevel {
+    Info,
+    Ok,
     Error,
     Warning,
 }
@@ -61,6 +63,8 @@ impl Log {
             let level_value = |color: bool| {
                 if color == false {
                     let level_name = match level {
+                        LogLevel::Info => String::from("Info"),
+                        LogLevel::Ok => String::from("Ok"),
                         LogLevel::Error => String::from("Error"),
                         LogLevel::Warning => String::from("Warning"),
                     };
@@ -68,6 +72,10 @@ impl Log {
                     return level_name;
                 } else {
                     let level_name = match level {
+                        LogLevel::Info => {
+                            colors::green_bold("Info").to_string()
+                        }
+                        LogLevel::Ok => colors::intense_blue("Ok").to_string(),
                         LogLevel::Error => {
                             colors::red_bold("Error").to_string()
                         }
