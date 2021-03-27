@@ -1,3 +1,4 @@
+// Copyright (C) Catsh authors. All right reserved.
 use clap::ArgMatches;
 
 pub(crate) fn run_command(args: &ArgMatches) {
