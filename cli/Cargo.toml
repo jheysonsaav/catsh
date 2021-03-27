@@ -2,7 +2,7 @@
 name = "catsh-cli"
 version = "0.1.0-alpha.0"
 description = "A cross-platform shell."
-authors = ["Catsh Contributors"]
+authors = ["Catsh authors"]
 edition = "2018"
 license = "GPL-2.0"
 repository = "https://github.com/jheysonsaav/catsh"
@@ -18,6 +18,6 @@ clap = "2.33.3"
 
 [package.metadata.winres]
 OriginalFilename = "catsh.exe"
-LegalCopyright = "Copyright (C) Catsh contributors. All right reserved."
+LegalCopyright = "Copyright (C) Catsh authors. All right reserved."
 ProductName = "Catsh"
 FileDescription = "A cross-platform shell."

@@ -2,7 +2,7 @@
 name = "catsh-core"
 version = "0.1.0-alpha.0"
 description = "A cross-platform shell."
-authors = ["catsh Contributors"]
+authors = ["catsh authors"]
 edition = "2018"
 license = "GPL-2.0"
 repository = "https://github.com/jheysonsaav/catsh"
