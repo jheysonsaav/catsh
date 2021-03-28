@@ -1,13 +1,13 @@
 [package]
 name = "catsh-core"
-version = "0.2.1-alpha.0"
+version = "0.2.2-alpha.0"
 authors = ["Catsh authors"]
 edition = "2018"
 description = "A cross-platform shell."
 readme = "../README.md"
 repository = "https://github.com/jheysonsaav/catsh"
 license = "GPL-2.0"
-keywords = ["shell", "cli", "catsh", "windows", "linux", "macos"]
+keywords = ["shell", "catsh", "windows", "linux", "macos"]
 categories = ["command-line-interface", "command-line-utilities"]
 
 [lib]
