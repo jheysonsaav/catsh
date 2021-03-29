@@ -1,13 +1,16 @@
 // Copyright (C) Catsh authors. All right reserved.
 use crate::logs::{Log, LogLevel};
 use directories::ProjectDirs;
-use std::{fs::create_dir_all, path::PathBuf};
+use std::{
+    fs::create_dir_all,
+    path::{Path, PathBuf},
+};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct CatshDirs {
-    pub config_dir: PathBuf,
-    pub cache_dir: PathBuf,
-    pub data_dir: PathBuf,
+    config_dir: PathBuf,
+    cache_dir: PathBuf,
+    data_dir: PathBuf,
 }
 
 impl CatshDirs {
@@ -70,5 +73,17 @@ impl CatshDirs {
             Log::new(LogLevel::Ok, 0, "The directory exist");
         }
         self
+    }
+
+    pub fn config_dir(&self) -> &Path {
+        self.config_dir.as_path()
+    }
+
+    pub fn cache_dir(&self) -> &Path {
+        self.cache_dir.as_path()
+    }
+
+    pub fn data_dir(&self) -> &Path {
+        self.data_dir.as_path()
     }
 }
