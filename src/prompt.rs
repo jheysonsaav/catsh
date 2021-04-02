@@ -17,7 +17,7 @@ impl Prompt {
         #[cfg(windows)]
         let history_file: String = format!(
             "{}\\stellar_history",
-            dirs::stellarDirs::load().config_dir().to_str().unwrap()
+            dirs::StellarDirs::load().config_dir().to_str().unwrap()
         );
 
         let mut rl = Editor::<()>::new();

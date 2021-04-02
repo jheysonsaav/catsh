@@ -14,9 +14,6 @@ use utils::{
 fn main() {
     dirs::StellarDirs::load().verify();
 
-    #[cfg(windows)]
-    colors::enable_ansi();
-
     let app_version: String =
         env::var("CARGO_PKG_VERSION").unwrap_or(String::from("1.0.0"));
     let app_authors: String = env::var("CARGO_PKG_AUTHORS")
