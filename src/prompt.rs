@@ -24,7 +24,7 @@ impl Prompt {
 
         if private == false {
             if rl.load_history(&history_file).is_err() {
-                println!("No previous history.");
+                Log::new(LogLevel::Warning, 0, "No previous history.").show();
             }
         }
 
@@ -35,7 +35,7 @@ impl Prompt {
                     if private == false {
                         rl.add_history_entry(line.as_str());
                     }
-                    println!("Line: {}", line);
+                    Log::new(LogLevel::Error, 1, "Command not found.").show();
                 }
                 Err(ReadlineError::Interrupted) => {
                     continue;
@@ -45,7 +45,7 @@ impl Prompt {
                     break;
                 }
                 Err(err) => {
-                    println!("Error: {:?}", err);
+                    Log::new(LogLevel::Error, 1, err.to_string().as_str());
                     break;
                 }
             }
