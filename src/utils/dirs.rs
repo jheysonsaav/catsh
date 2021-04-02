@@ -176,7 +176,7 @@ mod tests {
         assert_eq!(
             dirs.cache_dir.to_str().unwrap(),
             format!(
-                "{}\\AppData\\Roaming\\stellar\\stellar\\cache",
+                "{}\\AppData\\Local\\stellar\\stellar\\cache",
                 env::var("USERPROFILE").unwrap()
             )
             .as_str()
