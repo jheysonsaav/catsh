@@ -13,7 +13,7 @@ use colored::*;
 /// these are possible levels for a log.
 /// we can use them as follows:
 /// ```rust
-/// use stellar_core::logs::LogLevel;
+/// use stellar::logs::LogLevel;
 ///
 /// let log_level_error = LogLevel::Error;
 /// let log_level_warning = LogLevel::Warning;
