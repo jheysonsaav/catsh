@@ -28,10 +28,22 @@ fn main() {
                         .index(1),
                 ),
         )
+        .subcommand(
+            SubCommand::with_name("shell")
+                .version(APP_VERSION)
+                .about("Run shell.")
+                .arg(
+                    Arg::with_name("private")
+                        .required(false)
+                        .takes_value(false),
+                ),
+        )
         .get_matches();
 
     match matches.subcommand() {
-        ("run", Some(new_args)) => commands::run::run_command(new_args),
+        ("run", Some(args)) => commands::run::run_command(args),
+        ("shell", Some(args)) => commands::shell::shell_command(args),
+        ("", Some(args)) => commands::shell::shell_command(args),
         (&_, _) => {
             Log::new(LogLevel::Error, 0, "Command not found").show();
         }

@@ -1,8 +1,8 @@
 // Copyright (C) Catsh authors. All right reserved.
 pub mod colors;
 pub mod dirs;
-pub mod env;
 pub mod logs;
+pub mod prompt;
 
 #[derive(Debug)]
 pub struct User {

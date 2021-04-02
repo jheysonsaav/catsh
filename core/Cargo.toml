@@ -14,6 +14,7 @@ categories = ["command-line-interface", "command-line-utilities"]
 path = "lib.rs"
 
 [dependencies]
+rustyline = "8.0.0"
 directories = "3.0.1"
 termcolor = "1.1.2"
 lazy_static = "1.4.0"
