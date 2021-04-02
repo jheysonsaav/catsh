@@ -1,4 +1,4 @@
-use super::logs::{Log, LogLevel};
+use super::utils::logs::{Log, LogLevel};
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
 

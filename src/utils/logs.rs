@@ -1,4 +1,4 @@
-// Copyright (C) stellar authors. All right reserved.
+// Copyright (C) Stellar authors. All right reserved.
 
 //! ## Logs
 //! There are parts of the application where the use or registration of logs
@@ -8,7 +8,7 @@
 //! This is where the mod logs appears, which contains functions
 //! that will help us to do this job.
 
-use crate::colors;
+use colored::*;
 
 /// these are possible levels for a log.
 /// we can use them as follows:
@@ -64,20 +64,16 @@ impl Log {
     pub fn show(&self) {
         match self.level {
             LogLevel::Info => {
-                println!("{} {}", colors::green_bold("Info:"), self.message);
+                println!("{} {}", "Info:".bold().green(), self.message);
             }
             LogLevel::Ok => {
-                println!("{} {}", colors::intense_blue("Ok:"), self.message);
+                println!("{} {}", "Ok:".bold().cyan(), self.message);
             }
             LogLevel::Error => {
-                println!("{} {}", colors::red_bold("Error:"), self.message);
+                println!("{} {}", "Error:".bold().red(), self.message);
             }
             LogLevel::Warning => {
-                println!(
-                    "{} {}",
-                    colors::yellow_bold("Warning:"),
-                    self.message
-                );
+                println!("{} {}", "Warning:".bold().yellow(), self.message);
             }
         }
     }

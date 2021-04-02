@@ -1,5 +1,5 @@
-// Copyright (C) stellar authors. All right reserved.
-use crate::logs::{Log, LogLevel};
+// Copyright (C) Stellar authors. All right reserved.
+use crate::utils::logs::{Log, LogLevel};
 use directories::ProjectDirs;
 use std::{
     fs::create_dir_all,

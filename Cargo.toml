@@ -1,6 +1,26 @@
-[workspace]
+[package]
+name = "stellar"
+version = "0.1.0-alpha.1"
+authors = ["Stellar authors"]
+edition = "2018"
+description = "A cross-platform shell."
+readme = "README.md"
+repository = "https://github.com/jheysonsaav/stellar"
+license = "GPL-2.0"
+keywords = ["shell", "stellar", "windows", "linux", "macos"]
+categories = ["command-line-interface", "command-line-utilities"]
 
-members = [
-  "core",
-  "cli",
-]
+[dependencies]
+rustyline = "8.0.0"
+clap = "2.33.3"
+colored = "2.0.0"
+directories = "3.0.1"
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1.11"
+
+[package.metadata.winres]
+OriginalFilename = "stellar.exe"
+LegalCopyright = "Copyright (C) Stellar authors. All right reserved."
+ProductName = "stellar"
+FileDescription = "A cross-platform shell."
