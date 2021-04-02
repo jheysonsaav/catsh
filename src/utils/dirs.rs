@@ -89,3 +89,104 @@ impl StellarDirs {
         self.data_dir.as_path()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use std::env;
+
+    use super::*;
+
+    #[test]
+    fn test_configdir_load() {
+        let dirs = StellarDirs::load();
+
+        // ConfigDir
+        #[cfg(target_os = "linux")]
+        assert_eq!(
+            dirs.config_dir.to_str().unwrap(),
+            format!("{}/.config/stellar", env::var("HOME").unwrap()).as_str()
+        );
+
+        #[cfg(target_os = "windows")]
+        assert_eq!(
+            dirs.config_dir.to_str().unwrap(),
+            format!(
+                "{}\\stellar\\stellar\\config",
+                env::var("APPDATA").unwrap()
+            )
+            .as_str()
+        );
+
+        #[cfg(target_os = "macos")]
+        assert_eq!(
+            dirs.config_dir.to_str().unwrap(),
+            format!(
+                "{}/Library/Application Support/com.stellar.stellar",
+                env::var("HOME").unwrap()
+            )
+            .as_str()
+        );
+    }
+
+    #[test]
+    fn test_datadir_load() {
+        let dirs = StellarDirs::load();
+
+        // DataDir
+        #[cfg(target_os = "linux")]
+        assert_eq!(
+            dirs.data_dir.to_str().unwrap(),
+            format!("{}/.local/share/stellar", env::var("HOME").unwrap())
+                .as_str()
+        );
+
+        #[cfg(target_os = "windows")]
+        assert_eq!(
+            dirs.data_dir.to_str().unwrap(),
+            format!("{}\\stellar\\stellar\\data", env::var("APPDATA").unwrap())
+                .as_str()
+        );
+
+        #[cfg(target_os = "macos")]
+        assert_eq!(
+            dirs.data_dir.to_str().unwrap(),
+            format!(
+                "{}/Library/Application Support/com.stellar.stellar",
+                env::var("HOME").unwrap()
+            )
+            .as_str()
+        );
+    }
+
+    #[test]
+    fn test_cachedir_load() {
+        let dirs = StellarDirs::load();
+
+        // CacheDir
+        #[cfg(target_os = "linux")]
+        assert_eq!(
+            dirs.cache_dir.to_str().unwrap(),
+            format!("{}/.cache/stellar", env::var("HOME").unwrap()).as_str()
+        );
+
+        #[cfg(target_os = "windows")]
+        assert_eq!(
+            dirs.cache_dir.to_str().unwrap(),
+            format!(
+                "{}\\stellar\\stellar\\cache",
+                env::var("APPDATA").unwrap()
+            )
+            .as_str()
+        );
+
+        #[cfg(target_os = "macos")]
+        assert_eq!(
+            dirs.cache_dir.to_str().unwrap(),
+            format!(
+                "{}/Library/Caches/com.stellar.stellar",
+                env::var("HOME").unwrap()
+            )
+            .as_str()
+        );
+    }
+}
