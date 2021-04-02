@@ -1,20 +1,25 @@
-// Copyright (C) Catsh authors. All right reserved.
+// Copyright (C) stellar authors. All right reserved.
 mod commands;
 
-use catsh_core::logs::{Log, LogLevel};
 use clap::{App, Arg, SubCommand};
+use stellar_core::{
+    dirs,
+    logs::{Log, LogLevel},
+};
 
 #[cfg(windows)]
-use catsh_core::colors;
+use stellar_core::colors;
 
 fn main() {
+    dirs::StellarDirs::load().verify();
+
     #[cfg(windows)]
     colors::enable_ansi();
 
     const APP_VERSION: &'static str = env!("CARGO_PKG_VERSION");
     const APP_AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 
-    let matches = App::new("catsh")
+    let matches = App::new("stellar")
         .version(APP_VERSION)
         .author(APP_AUTHORS.replace(":", "\n").as_str())
         .subcommand(

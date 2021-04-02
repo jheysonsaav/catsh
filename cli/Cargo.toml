@@ -1,29 +1,29 @@
 [package]
-name = "catsh-cli"
+name = "stellar-cli"
 version = "0.1.0-alpha.1"
-authors = ["Catsh authors"]
+authors = ["Stellar authors"]
 edition = "2018"
 description = "A cross-platform shell."
 readme = "../README.md"
-repository = "https://github.com/jheysonsaav/catsh"
+repository = "https://github.com/jheysonsaav/stellar"
 license = "GPL-2.0"
-keywords = ["shell", "catsh", "windows", "linux", "macos"]
+keywords = ["shell", "stellar", "windows", "linux", "macos"]
 categories = ["command-line-interface", "command-line-utilities"]
-default-run = "catsh"
+default-run = "stellar"
 
 [[bin]]
-name = "catsh"
+name = "stellar"
 path = "main.rs"
 
 [dependencies]
-catsh-core = { path = "../core", version = "0.1.0-alpha.1" }
+stellar-core = { path = "../core", version = "0.1.0-alpha.1" }
 clap = "2.33.3"
 
 [target.'cfg(windows)'.build-dependencies]
 winres = "0.1.11"
 
 [package.metadata.winres]
-OriginalFilename = "catsh.exe"
-LegalCopyright = "Copyright (C) Catsh authors. All right reserved."
-ProductName = "Catsh"
+OriginalFilename = "stellar.exe"
+LegalCopyright = "Copyright (C) stellar authors. All right reserved."
+ProductName = "stellar"
 FileDescription = "A cross-platform shell."

@@ -1,8 +1,8 @@
-# Catsh
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jheysonsaav/catsh/Ci?label=Ci&logo=github)
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/jheysonsaav/catsh?include_prereleases&label=Release)
-![GitHub license](https://img.shields.io/github/license/jheysonsaav/catsh)
-![GitHub contributors](https://img.shields.io/github/contributors/jheysonsaav/catsh?label=Contributors)
+# stellar
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jheysonsaav/stellar/Ci?label=Ci&logo=github)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/jheysonsaav/stellar?include_prereleases&label=Release)
+![GitHub license](https://img.shields.io/github/license/jheysonsaav/stellar)
+![GitHub contributors](https://img.shields.io/github/contributors/jheysonsaav/stellar?label=Contributors)
 
 The best cross-platform shell
 
@@ -12,7 +12,7 @@ The best cross-platform shell
 ## Compiling
 1. keep the [requirements](#Requirements) in mind
 2. clone this repository:
-  - **Github Cli**: `gh repo clone jheysonsaav/catsh`
-  - **Git**: `git clone https://github.com/jheysonsaav/catsh.git`
-3. go to the folder called `catsh` and run the `cargo build --release` command
-4. you have succeeded, now you can run catsh with the `target/release/catsh` command for unix systems or `.\target\release\catsh.exe` for windows
+  - **Github Cli**: `gh repo clone jheysonsaav/stellar`
+  - **Git**: `git clone https://github.com/jheysonsaav/stellar.git`
+3. go to the folder called `stellar` and run the `cargo build --release` command
+4. you have succeeded, now you can run stellar with the `target/release/stellar` command for unix systems or `.\target\release\stellar.exe` for windows

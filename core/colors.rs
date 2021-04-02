@@ -1,4 +1,4 @@
-// Copyright (C) Catsh authors. All right reserved.
+// Copyright (C) stellar authors. All right reserved.
 use regex::Regex;
 use std::fmt;
 use std::io::Write;

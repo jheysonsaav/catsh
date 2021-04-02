@@ -1,3 +1,3 @@
-// Copyright (C) Catsh authors. All right reserved.
+// Copyright (C) stellar authors. All right reserved.
 pub mod run;
 pub mod shell;

@@ -1,4 +1,4 @@
-// Copyright (C) Catsh authors. All right reserved.
+// Copyright (C) stellar authors. All right reserved.
 pub mod colors;
 pub mod dirs;
 pub mod logs;

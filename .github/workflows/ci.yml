@@ -47,27 +47,27 @@ jobs:
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'ubuntu')
         run: |
-          mkdir catsh-x86_64-unknown-linux-gnu/
-          cp -f README.md target/release/catsh catsh-x86_64-unknown-linux-gnu/
-          zip -9r catsh-x86_64-unknown-linux-gnu.zip catsh-x86_64-unknown-linux-gnu/
+          mkdir stellar-x86_64-unknown-linux-gnu/
+          cp -f README.md target/release/stellar stellar-x86_64-unknown-linux-gnu/
+          zip -9r stellar-x86_64-unknown-linux-gnu.zip stellar-x86_64-unknown-linux-gnu/
 
       - name: Pre-release (Windows)
         if: |
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'windows')
         run: |
-          New-Item -Path . -Name "catsh-x86_64-pc-windows-msvc" -ItemType "directory"
-          Copy-Item -Path "README.md" -Destination "catsh-x86_64-pc-windows-msvc"
-          Compress-Archive -CompressionLevel Optimal -Force -Path target/release/catsh.exe -DestinationPath catsh-x86_64-pc-windows-msvc.zip
+          New-Item -Path . -Name "stellar-x86_64-pc-windows-msvc" -ItemType "directory"
+          Copy-Item -Path "README.md" -Destination "stellar-x86_64-pc-windows-msvc"
+          Compress-Archive -CompressionLevel Optimal -Force -Path target/release/stellar.exe -DestinationPath stellar-x86_64-pc-windows-msvc.zip
 
       - name: Pre-release (MacOS)
         if: |
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'macos')
         run: |
-          mkdir catsh-x86_64-apple-darwin/
-          cp -f README.md target/release/catsh catsh-x86_64-apple-darwin/
-          zip -9r catsh-x86_64-apple-darwin.zip catsh-x86_64-apple-darwin/
+          mkdir stellar-x86_64-apple-darwin/
+          cp -f README.md target/release/stellar stellar-x86_64-apple-darwin/
+          zip -9r stellar-x86_64-apple-darwin.zip stellar-x86_64-apple-darwin/
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -77,9 +77,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           files: |
-            catsh-x86_64-unknown-linux-gnu.zip
-            catsh-x86_64-pc-windows-msvc.zip
-            catsh-x86_64-apple-darwin.zip
+            stellar-x86_64-unknown-linux-gnu.zip
+            stellar-x86_64-pc-windows-msvc.zip
+            stellar-x86_64-apple-darwin.zip
           draft: true
 
       - name: Publish to Cargo

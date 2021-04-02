@@ -1,4 +1,4 @@
-// Copyright (C) Catsh authors. All right reserved.
+// Copyright (C) stellar authors. All right reserved.
 use crate::logs::{Log, LogLevel};
 use directories::ProjectDirs;
 use std::{
@@ -7,19 +7,21 @@ use std::{
 };
 
 #[derive(Debug, Clone)]
-pub struct CatshDirs {
+pub struct StellarDirs {
     config_dir: PathBuf,
     cache_dir: PathBuf,
     data_dir: PathBuf,
 }
 
-impl CatshDirs {
+impl StellarDirs {
     pub fn load() -> Self {
-        if let Some(catsh_dirs) = ProjectDirs::from("com", "catsh", "catsh") {
+        if let Some(stellar_dirs) =
+            ProjectDirs::from("com", "stellar", "stellar")
+        {
             Self {
-                config_dir: catsh_dirs.config_dir().to_owned(),
-                cache_dir: catsh_dirs.cache_dir().to_owned(),
-                data_dir: catsh_dirs.data_dir().to_owned(),
+                config_dir: stellar_dirs.config_dir().to_owned(),
+                cache_dir: stellar_dirs.cache_dir().to_owned(),
+                data_dir: stellar_dirs.data_dir().to_owned(),
             }
         } else {
             Self {

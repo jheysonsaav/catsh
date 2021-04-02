@@ -10,22 +10,24 @@ impl Prompt {
     pub fn new(private: bool) {
         #[cfg(unix)]
         let history_file: String = format!(
-            "{}/catsh_history",
-            dirs::CatshDirs::load().config_dir().to_str().unwrap()
+            "{}/stellar_history",
+            dirs::StellarDirs::load().config_dir().to_str().unwrap()
         );
 
         #[cfg(windows)]
         let history_file: String = format!(
-            "{}\\catsh_history",
-            dirs::CatshDirs::load().config_dir().to_str().unwrap()
+            "{}\\stellar_history",
+            dirs::stellarDirs::load().config_dir().to_str().unwrap()
         );
 
         let mut rl = Editor::<()>::new();
+
         if private == false {
             if rl.load_history(&history_file).is_err() {
                 println!("No previous history.");
             }
         }
+
         loop {
             let readline = rl.readline("-| ");
             match readline {

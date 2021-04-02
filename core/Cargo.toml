@@ -1,13 +1,13 @@
 [package]
-name = "catsh-core"
+name = "stellar-core"
 version = "0.1.0-alpha.1"
-authors = ["Catsh authors"]
+authors = ["Stellar authors"]
 edition = "2018"
 description = "A cross-platform shell."
 readme = "../README.md"
-repository = "https://github.com/jheysonsaav/catsh"
+repository = "https://github.com/jheysonsaav/stellar"
 license = "GPL-2.0"
-keywords = ["shell", "catsh", "windows", "linux", "macos"]
+keywords = ["shell", "stellar", "windows", "linux", "macos"]
 categories = ["command-line-interface", "command-line-utilities"]
 
 [lib]
