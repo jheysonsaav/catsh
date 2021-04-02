@@ -143,8 +143,11 @@ mod tests {
         #[cfg(target_os = "windows")]
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
-            format!("{}\\stellar\\stellar\\data", env::var("APPDATA").unwrap())
-                .as_str()
+            format!(
+                "{}\\AppData\\Roaming\\stellar\\stellar\\data",
+                env::var("USERPROFILE").unwrap()
+            )
+            .as_str()
         );
 
         #[cfg(target_os = "macos")]
@@ -173,8 +176,8 @@ mod tests {
         assert_eq!(
             dirs.cache_dir.to_str().unwrap(),
             format!(
-                "{}\\stellar\\stellar\\cache",
-                env::var("APPDATA").unwrap()
+                "{}\\AppData\\Roaming\\stellar\\stellar\\cache",
+                env::var("USERPROFILE").unwrap()
             )
             .as_str()
         );
