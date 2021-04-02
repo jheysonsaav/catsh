@@ -31,7 +31,7 @@ pub enum LogLevel {
 /// this is the structure that a log should have, this is global for any level
 /// we can use them as follows:
 /// ```rust
-/// use stellar_core::logs::{Log, LogLevel};
+/// use stellar::logs::{Log, LogLevel};
 ///
 /// // this print a log
 /// Log::new(LogLevel::Warning, 0, "This is a test log.").show();

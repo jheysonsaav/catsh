@@ -11,9 +11,6 @@ use utils::{
     logs::{Log, LogLevel},
 };
 
-#[cfg(windows)]
-use stellar_core::colors;
-
 fn main() {
     dirs::StellarDirs::load().verify();
 
