@@ -4,6 +4,6 @@ COPY . .
 RUN cargo build --release
 
 FROM ubuntu:20.04
-COPY --from=builder /usr/src/steller/target/release/steller /usr/bin/steller
-CMD [ "steller" ]
-ENTRYPOINT [ "steller" ]
+COPY --from=builder /usr/src/stellar/target/release/stellar /usr/bin
+CMD [ "stellar" ]
+ENTRYPOINT [ "stellar" ]

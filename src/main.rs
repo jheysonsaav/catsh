@@ -34,9 +34,9 @@ fn main() {
                 ),
         )
         .subcommand(
-            SubCommand::with_name("shell")
+            SubCommand::with_name("start")
                 .version(app_version.as_str())
-                .about("Run shell.")
+                .about("Start new stellar session.")
                 .arg(
                     Arg::with_name("private")
                         .required(false)
@@ -47,7 +47,7 @@ fn main() {
 
     match matches.subcommand() {
         ("run", Some(args)) => commands::run::run_command(args),
-        ("shell", Some(args)) => commands::shell::shell_command(args),
+        ("start", Some(args)) => commands::start::start_command(args),
         (&_, _) => {
             Log::new(LogLevel::Error, 0, "Command not found").show();
         }
