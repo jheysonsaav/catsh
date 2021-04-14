@@ -1,4 +1,4 @@
-# Mainteiner: Jheyson Saavedra <jheysonsaav@gmail.com>
+# Maintainer: Jheyson Saavedra <jheysonsaav@gmail.com>
 
 pkgname=catsh
 pkgver=0.1.0
@@ -27,4 +27,5 @@ build() {
 package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/catsh/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/catsh" "${pkgdir}/usr/bin/catsh"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/assets/linux/catsh.desktop" "${pkgdir}/usr/share/applications/catsh.desktop"
 }

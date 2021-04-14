@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Catsh
+GenericName=Shell
+Exec=catsh
+Type=Application
+Categories=System;
+Terminal=true
