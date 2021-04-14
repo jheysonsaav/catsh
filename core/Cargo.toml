@@ -1,20 +1,21 @@
 [package]
-name = "stellar_core"
+name = "catsh-core"
 version = "0.1.0-beta.0"
-authors = ["Stellar authors"]
+authors = ["Catsh authors"]
 edition = "2018"
-description = "🌟 A stellar cross-platform shell."
+description = "A cross-platform shell."
 readme = "../README.md"
-repository = "https://github.com/jheysonsaav/stellar"
+repository = "https://github.com/jheysonsaav/catsh"
 license = "MIT"
-keywords = ["shell", "stellar", "windows", "linux", "macos"]
+keywords = ["shell", "catsh", "windows", "linux", "macos"]
 categories = ["command-line-interface", "command-line-utilities"]
 
 [lib]
-name = "stellar_core"
 path = "lib.rs"
 
 [dependencies]
 rustyline = "8.0.0"
 colored = "2.0.0"
 directories = "3.0.1"
+toml = "0.5.8"
+serde = { version = "1.0.125", features = ["derive"] }

@@ -1,4 +1,4 @@
-// Copyright (C) Stellar authors. All right reserved.
+// Copyright (C) Catsh authors. All right reserved.
 use crate::logs::{Log, LogLevel};
 use directories::ProjectDirs;
 use std::{
@@ -7,21 +7,19 @@ use std::{
 };
 
 #[derive(Debug, Clone)]
-pub struct StellarDirs {
+pub struct CatshDirs {
     config_dir: PathBuf,
     cache_dir: PathBuf,
     data_dir: PathBuf,
 }
 
-impl StellarDirs {
+impl CatshDirs {
     pub fn load() -> Self {
-        if let Some(stellar_dirs) =
-            ProjectDirs::from("com", "stellar", "stellar")
-        {
+        if let Some(catsh_dirs) = ProjectDirs::from("com", "catsh", "catsh") {
             Self {
-                config_dir: stellar_dirs.config_dir().to_owned(),
-                cache_dir: stellar_dirs.cache_dir().to_owned(),
-                data_dir: stellar_dirs.data_dir().to_owned(),
+                config_dir: catsh_dirs.config_dir().to_owned(),
+                cache_dir: catsh_dirs.cache_dir().to_owned(),
+                data_dir: catsh_dirs.data_dir().to_owned(),
             }
         } else {
             Self {
@@ -98,30 +96,27 @@ mod tests {
 
     #[test]
     fn test_configdir_load() {
-        let dirs = StellarDirs::load();
+        let dirs = CatshDirs::load();
 
         // ConfigDir
         #[cfg(target_os = "linux")]
         assert_eq!(
             dirs.config_dir.to_str().unwrap(),
-            format!("{}/.config/stellar", env::var("HOME").unwrap()).as_str()
+            format!("{}/.config/catsh", env::var("HOME").unwrap()).as_str()
         );
 
         #[cfg(target_os = "windows")]
         assert_eq!(
             dirs.config_dir.to_str().unwrap(),
-            format!(
-                "{}\\stellar\\stellar\\config",
-                env::var("APPDATA").unwrap()
-            )
-            .as_str()
+            format!("{}\\catsh\\catsh\\config", env::var("APPDATA").unwrap())
+                .as_str()
         );
 
         #[cfg(target_os = "macos")]
         assert_eq!(
             dirs.config_dir.to_str().unwrap(),
             format!(
-                "{}/Library/Application Support/com.stellar.stellar",
+                "{}/Library/Application Support/com.catsh.catsh",
                 env::var("HOME").unwrap()
             )
             .as_str()
@@ -130,13 +125,13 @@ mod tests {
 
     #[test]
     fn test_datadir_load() {
-        let dirs = StellarDirs::load();
+        let dirs = CatshDirs::load();
 
         // DataDir
         #[cfg(target_os = "linux")]
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
-            format!("{}/.local/share/stellar", env::var("HOME").unwrap())
+            format!("{}/.local/share/catsh", env::var("HOME").unwrap())
                 .as_str()
         );
 
@@ -144,7 +139,7 @@ mod tests {
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
             format!(
-                "{}\\AppData\\Roaming\\stellar\\stellar\\data",
+                "{}\\AppData\\Roaming\\catsh\\catsh\\data",
                 env::var("USERPROFILE").unwrap()
             )
             .as_str()
@@ -154,7 +149,7 @@ mod tests {
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
             format!(
-                "{}/Library/Application Support/com.stellar.stellar",
+                "{}/Library/Application Support/com.catsh.catsh",
                 env::var("HOME").unwrap()
             )
             .as_str()
@@ -163,20 +158,20 @@ mod tests {
 
     #[test]
     fn test_cachedir_load() {
-        let dirs = StellarDirs::load();
+        let dirs = CatshDirs::load();
 
         // CacheDir
         #[cfg(target_os = "linux")]
         assert_eq!(
             dirs.cache_dir.to_str().unwrap(),
-            format!("{}/.cache/stellar", env::var("HOME").unwrap()).as_str()
+            format!("{}/.cache/catsh", env::var("HOME").unwrap()).as_str()
         );
 
         #[cfg(target_os = "windows")]
         assert_eq!(
             dirs.cache_dir.to_str().unwrap(),
             format!(
-                "{}\\AppData\\Local\\stellar\\stellar\\cache",
+                "{}\\AppData\\Local\\catsh\\catsh\\cache",
                 env::var("USERPROFILE").unwrap()
             )
             .as_str()
@@ -186,7 +181,7 @@ mod tests {
         assert_eq!(
             dirs.cache_dir.to_str().unwrap(),
             format!(
-                "{}/Library/Caches/com.stellar.stellar",
+                "{}/Library/Caches/com.catsh.catsh",
                 env::var("HOME").unwrap()
             )
             .as_str()

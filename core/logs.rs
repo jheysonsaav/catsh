@@ -1,4 +1,4 @@
-// Copyright (C) Stellar authors. All right reserved.
+// Copyright (C) Catsh authors. All right reserved.
 
 //! ## Logs
 //! There are parts of the application where the use or registration of logs
@@ -13,7 +13,7 @@ use colored::*;
 /// these are possible levels for a log.
 /// we can use them as follows:
 /// ```rust
-/// use stellar_core::logs::LogLevel;
+/// use catsh_core::logs::LogLevel;
 ///
 /// let log_level_error = LogLevel::Error;
 /// let log_level_warning = LogLevel::Warning;
@@ -31,7 +31,7 @@ pub enum LogLevel {
 /// this is the structure that a log should have, this is global for any level
 /// we can use them as follows:
 /// ```rust
-/// use stellar_core::logs::{Log, LogLevel};
+/// use catsh_core::logs::{Log, LogLevel};
 ///
 /// // this print a log
 /// Log::new(LogLevel::Warning, 0, "This is a test log.").show();

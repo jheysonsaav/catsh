@@ -12,14 +12,14 @@ impl Prompt {
     pub fn new(private: bool) -> Self {
         #[cfg(unix)]
         let history_file: String = format!(
-            "{}/stellar_history",
-            dirs::StellarDirs::load().config_dir().to_str().unwrap()
+            "{}/catsh_history",
+            dirs::CatshDirs::load().config_dir().to_str().unwrap()
         );
 
         #[cfg(windows)]
         let history_file: String = format!(
-            "{}\\stellar_history",
-            dirs::StellarDirs::load().config_dir().to_str().unwrap()
+            "{}\\catsh_history",
+            dirs::CatshDirs::load().config_dir().to_str().unwrap()
         );
 
         let mut rl = Editor::<()>::new();

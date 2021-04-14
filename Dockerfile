@@ -1,9 +1,9 @@
 FROM rust:1.51 as builder
-WORKDIR /usr/src/stellar
+WORKDIR /usr/src/catsh
 COPY . .
 RUN cargo build --release
 
 FROM ubuntu:20.04
-COPY --from=builder /usr/src/stellar/target/release/stellar /usr/bin
-CMD [ "stellar", "start" ]
-ENTRYPOINT [ "stellar" ]
+COPY --from=builder /usr/src/catsh/target/release/catsh /usr/bin
+CMD [ "catsh", "start" ]
+ENTRYPOINT [ "catsh" ]

@@ -1,23 +1,23 @@
-// Copyright (C) Stellar authors. All right reserved.
+// Copyright (C) Catsh authors. All right reserved.
 mod commands;
 
 use std::env;
 
-use clap::{App, Arg, SubCommand};
-use stellar_core::{
+use catsh_core::{
     dirs,
     logs::{Log, LogLevel},
 };
+use clap::{App, Arg, SubCommand};
 
 fn main() {
-    dirs::StellarDirs::load().verify();
+    dirs::CatshDirs::load().verify();
 
     let app_version: String =
         env::var("CARGO_PKG_VERSION").unwrap_or_else(|_| String::from("1.0.0"));
     let app_authors: String = env::var("CARGO_PKG_AUTHORS")
         .unwrap_or_else(|_| String::from("Jheyson Saavedra"));
 
-    let matches = App::new("stellar")
+    let matches = App::new("catsh")
         .version(app_version.as_str())
         .author(app_authors.replace(":", "\n").as_str())
         .subcommand(
@@ -34,7 +34,7 @@ fn main() {
         .subcommand(
             SubCommand::with_name("start")
                 .version(app_version.as_str())
-                .about("Start new stellar session.")
+                .about("Start new catsh session.")
                 .arg(
                     Arg::with_name("private")
                         .required(false)
