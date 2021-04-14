@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=Catsh
+Comment=A cross-platform shell.
 GenericName=Shell
 Exec=catsh
 Type=Application
-Categories=System;
+Categories=Utility;System;
 Terminal=true
+Keywords=catsh;shell;

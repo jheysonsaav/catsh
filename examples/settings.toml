@@ -1,8 +1,8 @@
-[stellar]
+[global]
 color = "always" # Possible values: auto, always, never
 
 [plugins]
-base = "0.1.0-beta.0"
+base = { version = "0.1.0-beta.0" }
 
 [plugins.base.settings]
-style = "stellar" # Possible values: stellar, unix, windows
+style = "catsh" # Possible values: catsh, unix, windows
