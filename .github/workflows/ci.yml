@@ -25,30 +25,74 @@ jobs:
           rustc --version
           cargo --version
 
+      - name: Testing on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+        run: cargo test
+
+      - name: Pre-release (Testing) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: cargo test --release
+
+  check:
+    name: Checking on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        rust-version: [1.51.0, 1.50.0]
+
+    steps:
+      - name: Install Rustlang ${{ matrix.rust-version }}
+        uses: hecrj/setup-rust-action@v1
+        with:
+          rust-version: ${{ matrix.rust-version }}
+
+      - uses: actions/checkout@v2
+
+      - name: Versions
+        run: |
+          rustc --version
+          cargo --version
+
+      - name: Checking on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+        run: cargo check
+
+      - name: Pre-release (Check) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: cargo check --release
+  
+  lint:
+    name: Linting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        rust-version: [1.51.0, 1.50.0]
+
+    steps:
+      - name: Install Rustlang ${{ matrix.rust-version }}
+        uses: hecrj/setup-rust-action@v1
+        with:
+          rust-version: ${{ matrix.rust-version }}
+
+      - uses: actions/checkout@v2
+
+      - name: Versions
+        run: |
+          rustc --version
+          cargo --version
+
       - name: Install clippy and rustfmt
         run: |
           rustup component add clippy
           rustup component add rustfmt
-
-      - name: Testing on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
-        run: cargo test
-
-      - name: Checking on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
-        run: cargo check
 
       - name: Linting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
         run: cargo clippy
 
       - name: Formatting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
         run: cargo fmt
-
-      - name: Pre-release (Testing) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: cargo test --release
-
-      - name: Pre-release (Check) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: cargo check --release
 
   build:
     name: Building on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
