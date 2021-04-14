@@ -3,8 +3,8 @@ name: Ci
 on: [push, pull_request]
 
 jobs:
-  lint:
-    name: Checking, testing and linting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+  test:
+    name: Testing on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -51,18 +51,19 @@ jobs:
         run: cargo check --release
 
   build:
-    name: Running on ${{ matrix.os }}
+    name: Building on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ "ubuntu-latest", "windows-latest", "macos-latest" ]
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        rust-version: [1.51.0]
 
     steps:
-      - name: Install Rustlang v1.51.0
+      - name: Install Rustlang v${{ matrix.rust-version }}
         uses: hecrj/setup-rust-action@v1
         with:
-          rust-version: 1.51.0
+          rust-version: ${{ matrix.rust-version }}
 
       - uses: actions/checkout@v2
 
@@ -70,6 +71,9 @@ jobs:
         run: |
           rustc --version
           cargo --version
+
+      - name: Checking build
+        run: cargo build
 
       - name: Pre-release (Build)
         if: startsWith(github.ref, 'refs/tags/v')
