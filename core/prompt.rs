@@ -1,13 +1,15 @@
-use super::utils::logs::{Log, LogLevel};
+use crate::logs::{Log, LogLevel};
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
 
 use crate::dirs;
 
-pub struct Prompt {}
+pub struct Prompt {
+    private: bool,
+}
 
 impl Prompt {
-    pub fn new(private: bool) {
+    pub fn new(private: bool) -> Self {
         #[cfg(unix)]
         let history_file: String = format!(
             "{}/stellar_history",
@@ -22,17 +24,15 @@ impl Prompt {
 
         let mut rl = Editor::<()>::new();
 
-        if private == false {
-            if rl.load_history(&history_file).is_err() {
-                Log::new(LogLevel::Warning, 0, "No previous history.").show();
-            }
+        if !private && rl.load_history(&history_file).is_err() {
+            Log::new(LogLevel::Warning, 0, "No previous history.").show();
         }
 
         loop {
             let readline = rl.readline("-| ");
             match readline {
                 Ok(line) => {
-                    if private == false {
+                    if !private {
                         rl.add_history_entry(line.as_str());
                     }
                     Log::new(LogLevel::Error, 1, "Command not found.").show();
@@ -51,8 +51,14 @@ impl Prompt {
             }
         }
 
-        if private == false {
+        if !private {
             rl.save_history(&history_file).unwrap();
         }
+
+        Self { private }
+    }
+
+    pub fn is_private(&self) -> bool {
+        self.private
     }
 }

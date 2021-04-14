@@ -1,5 +1,5 @@
 // Copyright (C) Stellar authors. All right reserved.
-use crate::utils::logs::{Log, LogLevel};
+use crate::logs::{Log, LogLevel};
 use directories::ProjectDirs;
 use std::{
     fs::create_dir_all,
@@ -33,7 +33,7 @@ impl StellarDirs {
     }
 
     pub fn verify(self) -> Self {
-        if self.config_dir.exists() == false {
+        if !self.config_dir.exists() {
             match create_dir_all(self.config_dir.to_owned()) {
                 Ok(_) => {
                     let _ = Log::new(LogLevel::Ok, 0, "Created directory");
@@ -47,7 +47,7 @@ impl StellarDirs {
             Log::new(LogLevel::Ok, 0, "The directory exist");
         }
 
-        if self.cache_dir.exists() == false {
+        if !self.cache_dir.exists() {
             match create_dir_all(self.cache_dir.to_owned()) {
                 Ok(_) => {
                     let _ = Log::new(LogLevel::Ok, 0, "Created directory");
@@ -61,7 +61,7 @@ impl StellarDirs {
             Log::new(LogLevel::Ok, 0, "The directory exist");
         }
 
-        if self.data_dir.exists() == false {
+        if !self.data_dir.exists() {
             match create_dir_all(self.data_dir.to_owned()) {
                 Ok(_) => {
                     let _ = Log::new(LogLevel::Ok, 0, "Created directory");
