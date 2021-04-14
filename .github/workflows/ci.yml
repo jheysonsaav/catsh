@@ -27,16 +27,19 @@ jobs:
           rustc --version
           cargo --version
           
-      - name: Testing
+      - name: Testing, Check & Clippy
         run: |
-          cargo check
           cargo test
+          cargo check
+          cargo clippy
 
       - name: Pre-release (Testing)
         if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          cargo check --release
-          cargo test --release
+        run: cargo test --release
+
+      - name: Pre-release (Check)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: cargo check --release
 
       - name: Pre-release (Build)
         if: startsWith(github.ref, 'refs/tags/v')
