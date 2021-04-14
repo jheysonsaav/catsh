@@ -27,8 +27,8 @@ jobs:
 
       - name: Install clippy and rustfmt
         run: |
-        rustup component add clippy
-        rustup component add rustfmt
+          rustup component add clippy
+          rustup component add rustfmt
 
       - name: Testing on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
         run: cargo test
