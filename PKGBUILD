@@ -27,5 +27,5 @@ build() {
 package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/catsh/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/catsh" "${pkgdir}/usr/bin/catsh"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/assets/linux/catsh.desktop" "${pkgdir}/usr/share/applications/catsh.desktop"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/assets/linux/catsh.desktop" "${pkgdir}/usr/share/applications/catsh.desktop"
 }
