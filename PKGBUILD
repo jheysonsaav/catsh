@@ -1,19 +1,26 @@
+# Mainteiner: Jheyson Saavedra <jheysonsaav@gmail.com>
+
 pkgname=catsh
-pkgver=0.1.0_beta.0
+pkgver=0.1.0
+pkgdesc="A cross-platform shell."
 pkgrel=1
-arch=('x86_64')
-url='https://github.com/jheysonsaav/catsh'
-license=('MIT')
-depends=('git')
-makedepends=('rust')
-provides=('catsh')
-source=('${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip')
+arch=("x86_64")
+url="https://github.com/jheysonsaav/catsh"
+license=("MIT")
+depends=("git")
+makedepends=("rust" "git")
+provides=("catsh")
+source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip")
+sha512sums=('SKIP')
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo test --release
+  cargo check --release
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export CARGO_HOME="${srcdir}/${pkgname}/CARGO"
-  export CFLAGS="-fcommon -fPIE"
-  export RUSTUP_TOOLCHAIN=stable
   cargo build --release
 }
 
