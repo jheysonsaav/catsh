@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   lint:
-    name: Testing on ${{ matrix.os }}
+    name: Checking, testing and linting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
     runs-on: ${{ matrix.os }}
 
     strategy:
