@@ -1,6 +1,6 @@
 [package]
 name = "catsh-cli"
-version = "0.2.1-beta.0"
+version = "0.2.2-beta.0"
 authors = ["Catsh authors"]
 edition = "2018"
 description = "A cross-platform shell."
@@ -16,7 +16,7 @@ name = "catsh"
 path = "main.rs"
 
 [dependencies]
-catsh-core = { path = "../core", version = "0.2.1-beta.0" }
+catsh-core = { path = "../core", version = "0.2.2-beta.0" }
 clap = "2.33.3"
 
 [target.'cfg(windows)'.build-dependencies]
