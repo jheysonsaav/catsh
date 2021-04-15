@@ -9,7 +9,7 @@ on:
 
 jobs:
   cargo-publish:
-    name: Publish to crates.io
+    name: Publish cargo package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
