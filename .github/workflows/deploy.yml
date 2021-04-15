@@ -31,7 +31,7 @@ jobs:
           cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   build:
-    name: Building on ${{ matrix.os }}
+    name: Build release (${{ matrix.target }})
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -131,11 +131,26 @@ jobs:
           zip -9r ../../../${{ matrix.name }} catsh
           cd -
 
-      - name: Release
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.name }}
+
+  release:
+    name: Github release
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Artifacts
+        uses: actions/download-artifact@v2
+
+      - name: Publish
         uses: softprops/action-gh-release@v1
+        with:
+          files: catsh-*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-        with:
-          files: |
-            catsh-*.zip
-          draft: true
