@@ -73,6 +73,7 @@ jobs:
           cargo --version
 
       - name: Checking build
+        if: "!startsWith(github.ref, 'refs/tags/v')"
         run: cargo build
 
       - name: Pre-release (Build)
