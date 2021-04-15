@@ -106,6 +106,13 @@ jobs:
           profile: minimal
           target: ${{ matrix.target }}
 
+      - name: Pre-release (test)
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --release --target ${{ matrix.target }}
+          use-cross: ${{ matrix.os == 'ubuntu-latest' }}
+
       - name: Pre-release (build)
         uses: actions-rs/cargo@v1
         env:
