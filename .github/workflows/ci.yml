@@ -79,7 +79,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         run: cargo build --release
 
-      - name: Pre-release (Ubuntu)
+      - name: Pre-release (Ubuntu x86_64)
         if: |
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'ubuntu')
@@ -87,8 +87,18 @@ jobs:
           mkdir catsh-x86_64-unknown-linux-gnu/
           cp -f README.md target/release/catsh catsh-x86_64-unknown-linux-gnu/
           zip -9r catsh-x86_64-unknown-linux-gnu.zip catsh-x86_64-unknown-linux-gnu/
+          
+      - name: Pre-release (Ubuntu i686)
+        if: |
+          startsWith(github.ref, 'refs/tags/v') &&
+          startsWith(matrix.os, 'ubuntu')
+        run: |
+          rustup target add i686-unknown-linux-gnu
+          cargo build --release --target i686-unknown-linux-gnu
+          cp -f README.md target/i686-unknown-linux-gnu/release/catsh catsh-i686-unknown-linux-gnu/
+          zip -9r catsh-i686-unknown-linux-gnu.zip catsh-i686-unknown-linux-gnu/
 
-      - name: Pre-release (Windows)
+      - name: Pre-release (Windows x84_64)
         if: |
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'windows')
@@ -97,7 +107,18 @@ jobs:
           Copy-Item -Path "README.md" -Destination "catsh-x86_64-pc-windows-msvc"
           Compress-Archive -CompressionLevel Optimal -Force -Path target/release/catsh.exe -DestinationPath catsh-x86_64-pc-windows-msvc.zip
 
-      - name: Pre-release (MacOS)
+      - name: Pre-release (Windows i686)
+        if: |
+          startsWith(github.ref, 'refs/tags/v') &&
+          startsWith(matrix.os, 'windows')
+        run: |
+          rustup target add i686-pc-windows-msvc
+          cargo build --release --target i686-pc-windows-msvc
+          New-Item -Path . -Name "catsh-i686-pc-windows-msvc" -ItemType "directory"
+          Copy-Item -Path "README.md" -Destination "catsh-i686-pc-windows-msvc"
+          Compress-Archive -CompressionLevel Optimal -Force -Path target/i686-pc-windows-msvc/release/catsh.exe -DestinationPath catsh-i686-pc-windows-msvc.zip
+
+      - name: Pre-release (MacOS x86_64)
         if: |
           startsWith(github.ref, 'refs/tags/v') &&
           startsWith(matrix.os, 'macos')
@@ -117,6 +138,8 @@ jobs:
             catsh-x86_64-unknown-linux-gnu.zip
             catsh-x86_64-pc-windows-msvc.zip
             catsh-x86_64-apple-darwin.zip
+            catsh-i686-unknown-linux-gnu.zip
+            catsh-i686-pc-windows-msvc.zip
           draft: true
 
         

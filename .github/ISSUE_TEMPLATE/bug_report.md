@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 ### Extra information:
  - **OS**: [e.g. Windows, Linux, Redox, macOS]
  - **Rust version**: [e.g. 1.50.0, 1.51.0]
- - **Rust channel**: [e.g. Stable, Beta, Nightly]*
+ - **Rust channel**: [e.g. Stable, Beta, Nightly]
  - **Catsh version**: [e.g. 0.1.0-beta.0, 0.1.0]
 
 ### Additional context
