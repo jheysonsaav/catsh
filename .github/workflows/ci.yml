@@ -97,7 +97,7 @@ jobs:
           rustup target add i686-unknown-linux-gnu
           cargo build --release --target i686-unknown-linux-gnu
           mkdir catsh-i686-unknown-linux-gnu
-          cp -f README.md target/i686-unknown-linux-gnu/release/catsh i686-unknown-linux-gnu
+          cp -f README.md target/i686-unknown-linux-gnu/release/catsh catsh-i686-unknown-linux-gnu
           zip -9r catsh-i686-unknown-linux-gnu.zip catsh-i686-unknown-linux-gnu
 
       - name: Pre-release (Windows x84_64)
