@@ -62,11 +62,15 @@ impl CatshDirs {
         if !self.data_dir.exists() {
             match create_dir_all(self.data_dir.to_owned()) {
                 Ok(_) => {
-                    let _ = Log::new(LogLevel::Ok, 0, "Created directory");
+                    let _ = Log::new(LogLevel::Ok, 0, "Created data directory");
                 }
                 Err(_) => {
-                    Log::new(LogLevel::Error, 1, "Error for create directory")
-                        .show();
+                    Log::new(
+                        LogLevel::Error,
+                        1,
+                        "Error for create data directory",
+                    )
+                    .show();
                 }
             }
         } else {

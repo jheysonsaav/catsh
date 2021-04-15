@@ -1,9 +1,11 @@
+// Copyright (C) Catsh authors. All right reserved.
 use crate::logs::{Log, LogLevel};
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
 
 use crate::dirs;
 
+#[derive(Debug)]
 pub struct Prompt {
     private: bool,
 }

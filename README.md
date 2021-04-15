@@ -6,6 +6,9 @@
 
 A catsh cross-platform shell
 
+## Usage
+For create a new catsh session run the command `catsh start`
+
 ## Requirements
 - [Rust](https://www.rust-lang.org/)
 

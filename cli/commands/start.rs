@@ -1,3 +1,4 @@
+// Copyright (C) Catsh authors. All right reserved.
 use catsh_core::prompt::Prompt;
 use clap::ArgMatches;
 

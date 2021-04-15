@@ -53,7 +53,7 @@ fn main() {
     match matches.subcommand() {
         ("run", Some(args)) => commands::run::run_command(args),
         ("start", Some(args)) => commands::start::start_command(args),
-        (&_, _) => {
+        _ => {
             Log::new(LogLevel::Error, 0, "Command not found").show();
         }
     }
