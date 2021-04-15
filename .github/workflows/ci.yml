@@ -4,19 +4,18 @@ on: [push, pull_request]
 
 jobs:
   check:
-    name: Checking on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+    name: Checking on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-        rust-version: [1.51.0, 1.50.0]
 
     steps:
-      - name: Install Rustlang ${{ matrix.rust-version }}
+      - name: Install Rustlang v1.51.0
         uses: hecrj/setup-rust-action@v1
         with:
-          rust-version: ${{ matrix.rust-version }}
+          rust-version: 1.51.0
 
       - uses: actions/checkout@v2
 
@@ -30,40 +29,39 @@ jobs:
           rustup component add clippy
           rustup component add rustfmt
 
-      - name: Testing on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Testing
         run: cargo test
 
-      - name: Checking on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Checking
         run: cargo check
 
-      - name: Linting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Linting
         run: cargo clippy
 
-      - name: Formatting on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Formatting
         run: cargo fmt
 
-      - name: Pre-release (Testing) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Pre-release (Testing)
         if: startsWith(github.ref, 'refs/tags/v')
         run: cargo test --release
 
-      - name: Pre-release (Check) on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+      - name: Pre-release (Checking)
         if: startsWith(github.ref, 'refs/tags/v')
         run: cargo check --release
 
   build:
-    name: Building on ${{ matrix.os }} with Rust v${{ matrix.rust-version }}
+    name: Building on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-        rust-version: [1.51.0]
 
     steps:
-      - name: Install Rustlang v${{ matrix.rust-version }}
+      - name: Install Rustlang v1.51.0
         uses: hecrj/setup-rust-action@v1
         with:
-          rust-version: ${{ matrix.rust-version }}
+          rust-version: 1.51.0
 
       - uses: actions/checkout@v2
 
