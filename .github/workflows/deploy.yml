@@ -24,10 +24,10 @@ jobs:
 
       - name: Publish
         run: |
-          cd cli
+          cd core
           cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
           sleep 20
-          cd ../core
+          cd ../cli
           cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   build:
