@@ -63,7 +63,7 @@ dependencies = [
 
 [[package]]
 name = "catsh-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "catsh-core",
  "clap",
@@ -72,7 +72,7 @@ dependencies = [
 
 [[package]]
 name = "catsh-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "colored",
  "directories",

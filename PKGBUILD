@@ -1,7 +1,7 @@
 # Maintainer: Jheyson Saavedra <jheysonsaav@gmail.com>
 
 pkgname=catsh
-pkgver=0.1.0
+pkgver=0.1.1
 pkgdesc="A cross-platform shell."
 pkgrel=1
 arch=("x86_64")
