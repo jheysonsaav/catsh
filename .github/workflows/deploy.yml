@@ -155,17 +155,3 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-
-  aur-release:
-    name: Create AUR release
-    needs: github-release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Publish
-        uses: KSXGitHub/github-actions-deploy-aur@v2
-        with:
-          pkgname: catsh
-          pkgbuild: ./PKGBUILD
-          commit_username: "Jheyson Saavedra"
-          commit_email: jheysonsaav@gmail.com
-          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
